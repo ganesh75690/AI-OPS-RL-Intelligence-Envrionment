@@ -67,26 +67,68 @@ body {
     transition: 0.6s;
 }
 
-.btn:hover::before {
-    left: 100%;
-}
-
 /* CARDS */
-.card {
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(15px);
-    margin: 15px;
-    padding: 25px;
-    border-radius: 18px;
-    width: 260px;
-    transition: all 0.4s ease;
-    border: 1px solid rgba(255,255,255,0.1);
+.cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
 
-/* Floating hover */
+.card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    width: 280px;
+    text-align: center;
+    transition: 0.3s;
+}
+
 .card:hover {
-    transform: translateY(-12px) scale(1.03);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,255,200,0.3);
+}
+
+/* NEW UI COMPONENTS */
+.btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(45deg, #00f5a0, #00d9f5);
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.glow {
+    box-shadow: 0 0 10px rgba(0,255,200,0.8);
+}
+
+.input {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.progress-container {
+    width: 100%;
+    height: 20px;
+    background: #222;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #00f5a0, #00d9f5);
+    transition: width 0.5s ease;
 }
 
 /* HEADINGS */
@@ -134,13 +176,6 @@ p {
     <p style="margin-top:10px;">
         🟢 <b>System Status:</b> Running & Live
     </p>
-
-    <div class="buttons">
-        <a class="btn" href="/docs">📘 API Docs</a>
-        <a class="btn" href="/tasks">📋 Tasks</a>
-        <a class="btn" href="/baseline">⚡ Baseline</a>
-        <a class="btn" href="/state">📊 State</a>
-    </div>
 
     <div class="cards">
         <div class="card">
@@ -230,7 +265,11 @@ p {
 
             <div class="card">
                 <h3>🎯 Avg Score</h3>
-                <p id="score">Loading...</p>
+                <p id="avgScore">Loading...</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <p id="scoreText">0%</p>
             </div>
 
             <div class="card">
@@ -287,6 +326,49 @@ p {
         </div>
     </div>
 
+    <div style="margin-top:60px;">
+        <h2 style="text-align:center; font-size:28px;">� AI System Control Panel</h2>
+
+        <div class="cards">
+
+            <!-- 🎮 Simulator -->
+            <div class="card">
+                <h3>🎮 Live Action Simulator</h3>
+
+                <select id="taskSelect" class="input">
+                    <option value="easy">Easy Task</option>
+                    <option value="medium">Medium Task</option>
+                    <option value="hard">Hard Task</option>
+                </select>
+
+                <button class="btn glow" onclick="runStep()">Run Step</button>
+
+                <p id="result">Awaiting action...</p>
+            </div>
+
+            <!-- 📊 Progress -->
+            <div class="card">
+                <h3>📊 Performance Score</h3>
+
+                <div class="progress-container">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+
+                <p id="scoreText">0%</p>
+            </div>
+
+            <!-- 📡 Metrics -->
+            <div class="card">
+                <h3>📡 Live Metrics</h3>
+
+                <p>⚡ Tasks: <span id="taskCount">...</span></p>
+                <p>🎯 Avg Score: <span id="avgScore">...</span></p>
+                <p>🔄 Steps: <span id="steps">...</span></p>
+            </div>
+
+        </div>
+    </div>
+
     <footer style="margin-top:60px; opacity:0.7;">
         Built by Ganesh • OpenEnv Hackathon 🚀 <br>
         🌐 <a href="/docs" target="_blank" style="color:#00c6ff;">API Docs</a>
@@ -295,26 +377,57 @@ p {
 </div>
 
 <script>
+async function runStep() {
+    const task = document.getElementById("taskSelect").value;
+
+    document.getElementById("result").innerText = "Processing...";
+
+    try {
+        const res = await fetch('/step', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: task })
+        });
+
+        const data = await res.json();
+
+        document.getElementById("result").innerText =
+            "Reward: " + data.reward + " | Done: " + data.done;
+
+    } catch (e) {
+        document.getElementById("result").innerText = "Error executing step";
+    }
+}
+
 async function loadMetrics() {
     try {
         const res = await fetch('/baseline');
         const data = await res.json();
 
-        document.getElementById('score').innerText = data.average_score || "0.0";
-        document.getElementById('steps').innerText = data.steps || "N/A";
+        let score = (data.average_score || 0) * 100;
+
+        document.getElementById("avgScore").innerText = data.average_score || "0";
+        document.getElementById("steps").innerText = data.steps || "N/A";
+        document.getElementById("progressBar").style.width = score + "%";
+        document.getElementById("scoreText").innerText = Math.round(score) + "%";
+
     } catch (e) {
-        document.getElementById('score').innerText = "Error";
+        document.getElementById("avgScore").innerText = "Error";
     }
 
     try {
         const taskRes = await fetch('/tasks');
         const tasks = await taskRes.json();
-        document.getElementById('taskCount').innerText = tasks.length;
+        document.getElementById("taskCount").innerText = tasks.length;
     } catch (e) {
-        document.getElementById('taskCount').innerText = "Error";
+        document.getElementById("taskCount").innerText = "Error";
     }
 }
 
+// 🔄 Auto refresh every 5 sec
+setInterval(loadMetrics, 5000);
+
+// Initial load
 loadMetrics();
 </script>
 
