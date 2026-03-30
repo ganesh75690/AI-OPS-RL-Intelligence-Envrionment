@@ -5,10 +5,10 @@ Autonomous Decision-Making Environment for Task Prioritization
 🧪 Live Demo
 
 🌐 Hugging Face Space:
-👉 https://ganesh756-ai-ops-system-site.hf.space/
+👉 https://ganesh756-ai-ops-system.hf.space/
 
 📘 API Docs (Recommended):
-👉 https://ganesh756-ai-ops-system-site.hf.space/docs
+👉 https://ganesh756-ai-ops-system.hf.space/docs
 
 ---
 
