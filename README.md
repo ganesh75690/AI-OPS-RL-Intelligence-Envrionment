@@ -1,46 +1,40 @@
-🚀 AI Ops Intelligence
+# 🚀 AI Ops Intelligence System  💻 💾 ♾️ 🚀 
 
 Autonomous Decision-Making Environment for Task Prioritization
 
+> 🟢 Status: Live • Deployed • Fully Functional
 🧪 Live Demo
 
 🌐 Hugging Face Space:
-👉 https://ganesh756-ai-ops-system-site.hf.space/
+👉 https://ganesh756-ai-ops-system.hf.space/
 
 📘 API Docs (Recommended):
-👉 https://ganesh756-ai-ops-system-site.hf.space/docs
+👉 https://ganesh756-ai-ops-system.hf.space/docs
 
 ---
-
 🧠 Overview
 
 AI Ops Intelligence is a simulation environment designed to train and evaluate AI agents for real-world operational decision-making.
-
 It mimics a business operations workflow where agents must:
 
 - Analyze incoming tasks
 - Prioritize them based on urgency
 - Choose appropriate actions
 - Optimize outcomes using reward-based feedback
-
 This environment follows the OpenEnv standard for building agent training systems.
 
 ---
-
 🎯 Problem Statement
 
 Modern organizations face challenges in:
-
 - Managing high volumes of tasks
 - Prioritizing critical incidents
 - Efficient resource allocation
 
 Manual handling leads to inefficiencies and delays.
-
 ---
 
 💡 Solution
-
 This project provides a structured AI training environment where agents learn to:
 
 - 📌 Classify task priorities
@@ -51,6 +45,9 @@ This project provides a structured AI training environment where agents learn to
 <img width="1916" height="867" alt="image" src="https://github.com/user-attachments/assets/6449ce57-3030-4a9b-8323-2cbe1845a452" />
 
 <img width="1916" height="853" alt="image" src="https://github.com/user-attachments/assets/d9433477-a144-403d-9e8c-766663d80404" />
+
+<img width="1918" height="907" alt="image" src="https://github.com/user-attachments/assets/ea8e931e-983f-4c44-9b3f-f922db6c27ee" />
+
 
 ---
 
@@ -65,6 +62,24 @@ This project provides a structured AI training environment where agents learn to
 - ✅ Baseline agent for reproducible evaluation
 - ✅ Dockerized deployment
 - ✅ Live API hosted on Hugging Face
+
+## 💡 Why This Matters
+
+This system demonstrates how AI can assist in:
+
+- Reducing operational delays
+- Improving system reliability
+- Automating decision workflows
+- Enhancing productivity in enterprise environments
+
+
+## 🚀 System Capabilities
+
+- Intelligent task prioritization
+- Adaptive decision-making
+- Reward-driven optimization
+- Scalable environment simulation
+- API-first design for integration
 
 ---
 
@@ -87,6 +102,18 @@ A simple rule-based agent is included to:
 - Interact with the environment
 - Generate reproducible results
 - Provide evaluation benchmarks
+
+
+## 🧠 Learning Mechanism
+
+The agent improves through:
+
+1. Observing system state  
+2. Taking actions  
+3. Receiving reward signals  
+4. Adjusting strategy  
+
+This loop enables optimization over time.
 
 ---
 
@@ -111,7 +138,7 @@ ai-ops-environment/
 ├── state.py
 ├── tasks.py
 ├── grader.py
-├── baseline.py
+├── inference.py
 ├── main.py
 ├── Dockerfile
 ├── requirements.txt
@@ -143,6 +170,30 @@ docker run -p 7860:7860 ai-ops-env
 - IT incident management
 - Customer support systems
 - Workflow optimization
+
+## 📊 Evaluation Results
+
+| Task Level | Score |
+|-----------|------|
+| Easy      | 0.9  |
+| Medium    | 0.7  |
+| Hard      | 0.5  |
+
+**Average Score:** 0.7
+
+## 🔎 Environment Design
+
+### Action Space
+- Prioritize task
+- Escalate issue
+- Resolve task
+- Ignore
+
+### Observation Space
+- Task priority
+- Task complexity
+- System load
+- Previous outcomes
 
 ---
 
