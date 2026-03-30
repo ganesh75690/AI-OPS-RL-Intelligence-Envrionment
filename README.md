@@ -59,6 +59,18 @@ Core Capabilities:
 - ⚙️ Action selection (assign, escalate, resolve, ignore)
 - 📊 Reward-based optimization
 - 🔁 Continuous learning loop
+- 
+# 🤖 RL Agent Support
+
+The environment supports agent-based interaction.
+
+Included:
+- Rule-based agent (baseline policy)
+- Random agent (comparison baseline)
+
+Agents can be extended for:
+- Reinforcement Learning (DQN, PPO)
+- Policy optimization
 
 # 📸 System Preview
 
