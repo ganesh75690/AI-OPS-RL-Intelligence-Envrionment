@@ -1,15 +1,12 @@
 [project]
 name = "ai-ops-environment"
 version = "0.1.0"
-description = "AI Ops OpenEnv Environment for task prioritization"
-authors = [
-  { name="Ganesh" }
-]
-dependencies = [
-  "fastapi",
-  "uvicorn"
-]
+description = "AI Ops OpenEnv Environment"
+requires-python = ">=3.9"
+
+[tool.setuptools]
+py-modules = ["main", "environment", "models", "state", "tasks", "grader", "inference"]
 
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
