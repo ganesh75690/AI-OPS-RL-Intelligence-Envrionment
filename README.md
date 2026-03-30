@@ -194,6 +194,8 @@ Average Score: 0.7
 - System load
 - Historical outcomes
 
+![WhatsApp Image 2026-03-30 at 11 06 10 PM](https://github.com/user-attachments/assets/cdf6f571-fac0-4b7b-a7d1-67bada7be313)
+
 ---
 
 # 🌍 Real-World Applications
