@@ -2,3 +2,4 @@ fastapi
 uvicorn[standard]
 pydantic
 openenv-core
+python-multipart
