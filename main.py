@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
-from environment import OpsEnv
-from models import Action
-from tasks import get_tasks
-from grader import grade_easy
+from ai_ops_env.environment import OpsEnv
+from ai_ops_env.models import Action
+from ai_ops_env.tasks import get_tasks
+from ai_ops_env.grader import grade_easy
 from inference import run_baseline
 
 app = FastAPI()
