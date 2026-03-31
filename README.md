@@ -373,7 +373,7 @@ The system is structured into clearly defined components:
 - "inference.py" → Baseline agent interaction
 ---
 
-# ⚙️ API-First Design
+# ⚙️ API-First Design :
 
 - Built using FastAPI for scalable and structured endpoints
 - Fully compliant with OpenEnv specifications
@@ -381,7 +381,7 @@ The system is structured into clearly defined components:
 
 ---
 
-# 🧠 Typed & Validated Models
+# 🧠 Typed & Validated Models :
 
 - Uses Pydantic models for:
   - Action validation
@@ -395,7 +395,7 @@ Ensures:
 - ✅ Reduced runtime errors
 
 ---
-# 🔄 Deterministic & Reproducible
+# 🔄 Deterministic & Reproducible :
 
 - Baseline agent ensures consistent evaluation results
 - Grading logic is deterministic and testable
@@ -403,7 +403,7 @@ Ensures:
 
 ---
 
-# 🐳 Production-Ready Deployment
+# 🐳 Production-Ready Deployment :
 
 - Dockerized for consistent execution
 - Hugging Face deployment ensures live accessibility
@@ -411,7 +411,7 @@ Ensures:
 
 ---
 
-# 🧪 Robust Validation
+# 🧪 Robust Validation :
 
 - Successfully passes:
   - OpenEnv validation
@@ -428,7 +428,7 @@ Ensures:
 This project reflects that philosophy by combining AI-driven logic with solid software engineering practices.
 
 ---
-# 🔬 Research & Extension Potential
+# 🔬 Research & Extension Potential :
 
 This environment can serve as a foundation for:
 
@@ -468,7 +468,7 @@ The AI Ops Intelligence System demonstrates how intelligent agents can move beyo
 Unlike traditional rule-based workflows, this environment introduces a learning-driven approach, where agents continuously improve by interacting with dynamic operational scenarios, receiving feedback, and optimizing decisions over time.
 By combining:
 
-## 🚀 Features
+## 🚀 Features :
 
 | Features |
 |----------|
@@ -571,6 +571,6 @@ Enhancing system reliability
 🔮 Vision
 To enable a future where AI agents autonomously manage operations, continuously learning and improving through real-world feedback loops.
 
-## 💡 AI Ops Intelligence is a step toward truly intelligent, adaptive, and scalable operational ecosystems.
+## 💡 "AI Ops Intelligence is a step toward truly intelligent, adaptive, and scalable operational ecosystems".
 
 ---
