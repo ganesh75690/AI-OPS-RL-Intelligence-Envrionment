@@ -265,9 +265,11 @@ Average Score: 0.7
 └── openenv.yaml
 ```
 
-⚙️ Run Locally
+# ⚙️ How to Run Locally
 
 pip install -r requirements.txt
+
+uvicorn main:app --reload
 
 Open:
 👉 https://ganesh756-ai-ops-system.hf.space/docs
