@@ -380,6 +380,21 @@ The system is structured into clearly defined components:
 - Clear separation between environment logic and API layer
 
 ---
+
+# 🧠 Typed & Validated Models
+
+- Uses Pydantic models for:
+  - Action validation
+  - Observation structure
+  - Response consistency
+
+Ensures:
+
+- ✅ Type safety
+- ✅ Reliable data flow
+- ✅ Reduced runtime errors
+
+---
 # 🔄 Deterministic & Reproducible
 
 - Baseline agent ensures consistent evaluation results
