@@ -483,7 +483,7 @@ By combining:
 
 This project establishes a strong foundation for intelligent decision-making systems. Future enhancements aim to evolve it into a fully autonomous, adaptive AI operations platform.
 
-![WhatsApp Image 2026-03-31 at 9 57 01 AM](https://github.com/user-attachments/assets/e52cb87f-3f7e-43fb-9f83-cfa0068e2c52)
+![WhatsApp Image 2026-03-31 at 2 56 38 PM](https://github.com/user-attachments/assets/385da693-2bb9-4061-9fa9-92bf18454b53)
 
 
 > 🔍 Transforming chaotic operational workflows into intelligent, optimized decision systems using AI-driven decision environments.
