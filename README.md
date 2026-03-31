@@ -1,7 +1,7 @@
 # 🚀 AI OPS Intelligence System 💻 ♾️
 
-Autonomous Decision-Making Environment for Task Prioritization 
-“From tasks to intelligence — building systems that learn to decide.”
+Autonomous Decision-Making Environment for Task Prioritization. 
+- “From tasks to intelligence — building systems that learn to decide.”
 
 «🟢 Status: Live • Deployed • Fully Functional
  | ⚡ Category: AI Systems • Reinforcement Learning • DevOps Automation»
