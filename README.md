@@ -460,13 +460,7 @@ MIT License
 # 👨‍💻 Author :
 
 ## B SAI GANESH (BTECH, PARUL UNIVERSITY)
-
 ---
-# 🏁 Final Conclusion :
-
-The AI Ops Intelligence System demonstrates how intelligent agents can move beyond static automation and evolve into adaptive decision-making systems.
-Unlike traditional rule-based workflows, this environment introduces a learning-driven approach, where agents continuously improve by interacting with dynamic operational scenarios, receiving feedback, and optimizing decisions over time.
-By combining:
 
 ## 🚀 Features :
 
@@ -552,6 +546,13 @@ This project establishes a strong foundation for intelligent decision-making sys
 - Bridge gap between simulation and production environments
 
 ## “Evolving from a simulated decision environment to a fully autonomous operational intelligence system capable of learning, adapting, and optimizing in real-world scenarios.”
+
+---
+# 🏁 Final Conclusion :
+
+The AI Ops Intelligence System demonstrates how intelligent agents can move beyond static automation and evolve into adaptive decision-making systems.
+Unlike traditional rule-based workflows, this environment introduces a learning-driven approach, where agents continuously improve by interacting with dynamic operational scenarios, receiving feedback, and optimizing decisions over time.
+By combining:
 
 ---
 
