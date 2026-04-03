@@ -72,7 +72,21 @@ Included:
 Agents can be extended for:
 - Reinforcement Learning (DQN, PPO)
 - Policy optimization
+---
+# Why Reinforcement Learning?
 
+Traditional rule-based systems fail in dynamic environments.
+
+This environment requires:
+- Sequential decision making
+- Trade-offs between speed vs accuracy
+- Adaptive behavior based on feedback
+
+Reinforcement Learning is ideal because:
+- It learns from reward signals
+- It adapts to changing scenarios
+- It improves decision strategies over time
+---
 # 📸 System Preview :
 
 ## Dashboard :
