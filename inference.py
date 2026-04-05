@@ -15,17 +15,19 @@ def home():
 
 client = None
 try:
-    api_key = os.getenv("OPENAI_API_KEY")
-    base_url = os.getenv("API_BASE_URL", "https://api.openai.com/v1")
-
-    if api_key:
-        client = OpenAI(
-            api_key=api_key,
-            base_url=base_url
-        )
-    else:
-        client = None
-except Exception:
+    HF_TOKEN = os.getenv("HF_TOKEN")
+    
+    if HF_TOKEN is None:
+        raise ValueError("HF_TOKEN is required")
+    
+    API_BASE_URL = os.getenv("API_BASE_URL", "https://api.openai.com/v1")
+    
+    client = OpenAI(
+        base_url=API_BASE_URL,
+        api_key=HF_TOKEN
+    )
+except Exception as e:
+    print(f"[ERROR] Failed to initialize OpenAI client: {e}")
     client = None
 
 MODEL_NAME = os.getenv("MODEL_NAME", "gpt-4o-mini")
