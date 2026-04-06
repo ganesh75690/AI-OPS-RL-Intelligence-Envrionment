@@ -291,15 +291,24 @@ def smart_agent(task, health_score, performance):
 
 
 # -------------------------------
+# FORMAL GRADER
+# -------------------------------
+def compute_score(total_reward: float) -> float:
+    # Normalize reward (assuming max = 5.0)
+    return round(total_reward / 5.0, 2)
+
+
+# -------------------------------
 # LOGGING (STRICT)
 # -------------------------------
-
 def log_start(task, env, model):
     start_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(f"[START TIME] {start_time}")
     print(f"[ENV] {env} initialized")
     print(f"[INPUT] Received 5 tasks for optimization")
-    print(f"[START] task={task} env={env} model={model}", flush=True)
+    # Get current task name from environment state
+    task_name = getattr(env.state, 'current_task', {}).get('name', task) if hasattr(env, 'state') and hasattr(env.state, 'current_task') else task
+    print(f"[START] task={task_name} env=ai_ops model={MODEL_NAME}", flush=True)
 
 
 
@@ -315,9 +324,11 @@ def log_step(step, action, reward, done, error=None):
 
 def log_end(success, steps, rewards):
     rewards_str = ",".join([f"{r:.2f}" for r in rewards])
-
+    total_reward = sum(rewards)
+    score = compute_score(total_reward)
+    
     print(
-        f"[END] success={str(success).lower()} steps={steps} rewards={rewards_str}",
+        f"[END] success={str(success).lower()} steps={steps} rewards={rewards_str} score={score}",
         flush=True,
     )
 
