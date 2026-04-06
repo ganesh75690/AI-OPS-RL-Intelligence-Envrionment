@@ -196,18 +196,24 @@ ai-ops-system/
 
 ---
 # ⚙️ How to Run :
+```
 git clone https://github.com/YOUR_USERNAME/ai-ops-system.git
 cd ai-ops-system
-
+```
+```
 pip install -r requirements.txt
-
+```
+```
 export OPENAI_API_KEY=your_api_key
 export API_BASE_URL=https://api.openai.com/v1
 export MODEL_NAME=gpt-4o-mini
-
+```
+```
 uvicorn inference:app --host 0.0.0.0 --port 8000
+```
 
 Open in browser:
+
 http://127.0.0.1:8000 (for local only)
 
 # 🌐 API Endpoints :
@@ -216,6 +222,45 @@ http://127.0.0.1:8000 (for local only)
 /state → View tasks
 /reset → Reset system
 
+# ⚙️ Setup Instructions :
+
+Follow these steps to run the project locally.
+
+## 1️⃣ Clone the Repository :
+
+git clone https://github.com/YOUR_USERNAME/ai-ops-system.git
+cd ai-ops-system
+
+## 2️⃣ Install Dependencies :
+```
+pip install -r requirements.txt
+```
+## 3️⃣ Set Environment Variables :
+🐧 Linux / 🍎 Mac
+```
+export OPENAI_API_KEY=your_api_key
+export API_BASE_URL=https://api.openai.com/v1
+export MODEL_NAME=gpt-4o-mini
+```
+🪟 Windows
+```
+set OPENAI_API_KEY=your_api_key
+set API_BASE_URL=https://api.openai.com/v1
+set MODEL_NAME=gpt-4o-mini
+```
+## 4️⃣ Run the Application
+```
+uvicorn main:app --host 0.0.0.0 --port 8000
+```
+5️⃣ Open in Browser
+
+## 🐳 Docker Setup (Optional) :
+
+Build and run using Docker:
+```
+docker build -t ai-ops-system .
+docker run -p 8000:8000 ai-ops-system
+```
 # 🧠 Description :
 Autonomous AI Ops system that uses Reinforcement Learning + LLM to optimize task prioritization and decision-making in real time.
 ---
