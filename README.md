@@ -296,7 +296,6 @@ The reward is calculated based on:
 The AI Ops system evaluates each decision using a hybrid scoring mechanism combining priority, action effectiveness, and system efficiency.
 
 
-```
 ---
 # 👨‍💻 Author :
 B. SAI GANESH
@@ -316,6 +315,6 @@ By integrating reward-driven learning with contextual reasoning, this system dem
 Ultimately, this project is not just a model implementation — it represents a step toward building production-grade AI systems that are autonomous, explainable, and capable of real-time optimization.
 
 **“From static automation to autonomous intelligence — this system represents the future of AI-driven decision-making.”**
-**“From static automation to autonomous intelligence — this system represents the future of AI-driven decision-making.”**
+
 
 
