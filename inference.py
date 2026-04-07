@@ -26,10 +26,21 @@ except Exception:
     pass  # Don't break your system
 
 app = FastAPI()
+from fastapi.responses import PlainTextResponse
 
-@app.get("/")
+@app.get("/", response_class=PlainTextResponse)
 def home():
-    return {"message": "AI Ops System Running 🚀"}
+    import io
+    import sys
+
+    buffer = io.StringIO()
+    sys.stdout = buffer
+
+    run_baseline()
+
+    sys.stdout = sys.__stdout__
+
+    return buffer.getvalue()
 
 def get_client():
     try:
