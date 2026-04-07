@@ -13,35 +13,6 @@ from inference import run_baseline
 
 MODEL_NAME = os.getenv("MODEL_NAME", "gpt-4o-mini")
 
-# GLOBAL VALIDATOR CALL (RUNS ON IMPORT)
-try:
-    import os
-    
-    # Force direct environment access - no imports inside try
-    api_base = os.environ["API_BASE_URL"]
-    api_key = os.environ["API_KEY"]
-    
-    print(f"[DEBUG] Using proxy: {api_base}")
-    
-    from openai import OpenAI
-    
-    client = OpenAI(
-        base_url=api_base,
-        api_key=api_key
-    )
-
-    response = client.chat.completions.create(
-        model=os.getenv("MODEL_NAME", "gpt-4o-mini"),
-        messages=[{"role": "user", "content": "validator ping"}],
-        max_tokens=5
-    )
-
-    print(f"[ GLOBAL VALIDATOR CALL SUCCESS] Response: {response.choices[0].message.content}")
-
-except Exception as e:
-    print(f"[DEBUG] GLOBAL CALL FAILED: {str(e)}")
-    # Don't re-raise - continue normally
-
 app = FastAPI()
 env = OpsEnv()
 
@@ -453,36 +424,22 @@ def inference_raw():
 
 @app.get("/run")
 def run():
-    # FORCED VALIDATOR CALL (FIRST LINE)
-    try:
-        import os
-        
-        # Force direct environment access
-        api_base = os.environ["API_BASE_URL"]
-        api_key = os.environ["API_KEY"]
-        
-        print(f"[DEBUG] /run using proxy: {api_base}")
-        
-        from openai import OpenAI
-        
-        client = OpenAI(
-            base_url=api_base,
-            api_key=api_key
-        )
-
-        response = client.chat.completions.create(
-            model=os.getenv("MODEL_NAME", "gpt-4o-mini"),
-            messages=[{"role": "user", "content": "validator ping"}],
-            max_tokens=5
-        )
-
-        print(f"[ RUN VALIDATOR CALL SUCCESS] Response: {response.choices[0].message.content}")
-
-    except Exception as e:
-        print(f"[DEBUG] /run CALL FAILED: {str(e)}")
-
-    from inference import run_baseline
+    import os
+    from openai import OpenAI
     
+    # ONE CLEAN API CALL - NO COMPLEXITY
+    client = OpenAI(
+        base_url=os.environ["API_BASE_URL"],
+        api_key=os.environ["API_KEY"]
+    )
+    
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": "validator ping"}],
+        max_tokens=5
+    )
+    
+    from inference import run_baseline
     result = run_baseline()
     
     return {
