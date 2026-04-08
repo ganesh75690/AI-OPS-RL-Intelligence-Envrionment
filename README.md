@@ -245,8 +245,8 @@ Build and run using Docker:
 docker build -t ai-ops-system .
 docker run -p 8000:8000 ai-ops-system
 ```
-## 🧠 Description :
 Autonomous AI Ops system that uses Reinforcement Learning + LLM to optimize task prioritization and decision-making in real time.
+
 ---
 ##  AI Intelligence :
 
