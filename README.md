@@ -130,7 +130,7 @@ ai-ops-system/
 | Incident Response Automation     | Handles system failures and alerts automatically                            
 | Performance Tuning Engine        | Adjusts system parameters for optimal performance                            
 | Cost Efficiency Optimization     | Reduces unnecessary resource usage and operational costs 
-
+| Intelligent Scheduling           | Predicts system failure
 ---
 ## 🔗 Output format :
 ```
