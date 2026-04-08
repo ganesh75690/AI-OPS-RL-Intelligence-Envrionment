@@ -37,7 +37,22 @@ Autonomous Decision-Making Environment for Task Prioritization.
  This project introduces a Hybrid AI Ops Autonomous Decision Engine that leverages both Reinforcement Learning (RL) and Large Language Model (LLM) reasoning to optimize task execution in dynamic environments. The system is designed to intelligently manage and prioritize tasks under varying system conditions such as load, resource availability, and operational constraints.
 At its core, the solution functions as an adaptive decision-making agent that continuously observes the system state, evaluates task priorities, and selects optimal actions to maximize efficiency. By incorporating a reward-driven learning mechanism, the system improves its performance step-by-step, demonstrating progressive optimization across execution cycles.
 
----                  
+---  
+## 🔗 Environment at glance :
+
+
+• Operates within a **custom AI Ops simulation environment** that mimics real-world operational conditions  
+• Processes multiple tasks with varying **priorities, system load, and execution constraints**  
+• Provides a **state representation** including key factors like load levels and task importance  
+• Supports **step-wise interaction**, where the agent takes actions and receives feedback at each step  
+• Uses a **reward mechanism** to evaluate decisions based on priority, action quality, and efficiency  
+• Ensures **deterministic and stable execution** for consistent and reproducible results  
+• Simulates **dynamic conditions**, enabling adaptation to changing system states  
+• Integrates with **LLM via proxy API** for enhanced contextual decision-making  
+• Includes **fallback logic support** to maintain functionality even if external APIs fail  
+• Designed to be **scalable and extendable** for AI Ops, cloud systems, and workflow automation  
+
+---
 
 ## 🔗 Key Features :
 
