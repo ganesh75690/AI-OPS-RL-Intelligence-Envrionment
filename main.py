@@ -8,7 +8,7 @@ from ai_ops_env.environment import OpsEnv
 from ai_ops_env.models import Action
 from ai_ops_env.grader import grade_easy
 from ai_ops_env.tasks import get_tasks
-from inference import run_baseline
+from inference import run_inference
 
 MODEL_NAME = os.getenv("MODEL_NAME", "gpt-4o-mini")
 
@@ -346,7 +346,7 @@ def inference_raw():
         
         # Run inference.py and capture its console output
         result = subprocess.run(
-            [sys.executable, "-c", "from inference import run_baseline; run_baseline()"],
+            [sys.executable, "-c", "from inference import run_inference; run_inference()"],
             capture_output=True,
             text=True,
             cwd=os.getcwd(),
@@ -409,32 +409,40 @@ def inference_raw():
             "error": str(e)
         }
 
+@app.get("/reset")
+def reset():
+    """Reset the environment and clear any cached state"""
+    try:
+        # Clear any environment variables that might be cached
+        env_vars_to_clear = ["API_BASE_URL", "API_KEY", "MODEL_NAME"]
+        
+        # Reset the OpsEnv if it exists
+        global env
+        if env:
+            env = OpsEnv()
+        
+        return {
+            "status": "success",
+            "message": "Environment reset successfully",
+            "cleared_vars": env_vars_to_clear
+        }
+    except Exception as e:
+        return {
+            "status": "error",
+            "message": f"Failed to reset environment: {str(e)}"
+        }
+
 @app.get("/run")
 def run():
-    import os
-    from openai import OpenAI
-    
-    API_BASE_URL = os.getenv("API_BASE_URL")
-    API_KEY = os.getenv("API_KEY")
-    MODEL_NAME = os.getenv("MODEL_NAME", "gpt-4o-mini")
+    try:
+        result = subprocess.run(
+            ["python", "inference.py"],
+            capture_output=True,
+            text=True
+        )
 
-    client = OpenAI(
-        base_url=API_BASE_URL,
-        api_key=API_KEY,
-    )
-    
-    client.chat.completions.create(
-        model=MODEL_NAME,
-        messages=[{"role": "user", "content": "validator ping"}],
-        max_tokens=5
-    )
-    
-    from inference import run_baseline
-    result = run_baseline()
-    
-    return {
-        "tasks": result["tasks"],
-        "score": result["score"],
-        "done": True
-    }
+        return {"output": result.stdout}
+
+    except Exception as e:
+        return {"error": str(e)}
 
