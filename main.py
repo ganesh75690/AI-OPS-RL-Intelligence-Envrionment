@@ -10,7 +10,7 @@ from ai_ops_env.grader import grade_easy
 from ai_ops_env.tasks import get_tasks
 from inference import run_inference
 
-MODEL_NAME = os.getenv("MODEL_NAME", "gpt-4o-mini")
+MODEL_NAME = os.getenv("MODEL_NAME", "Qwen/Qwen2.5-72B-Instruct")
 
 app = FastAPI()
 env = OpsEnv()
@@ -440,9 +440,14 @@ def run():
             capture_output=True,
             text=True
         )
-
-        return {"output": result.stdout}
+        
+        # Fix double encoding: ensure newlines are actual newlines
+        output = result.stdout.replace("\\n", "\n")
+        
+        from fastapi.responses import PlainTextResponse
+        return PlainTextResponse(output)
 
     except Exception as e:
-        return {"error": str(e)}
+        from fastapi.responses import PlainTextResponse
+        return PlainTextResponse(str(e))
 
