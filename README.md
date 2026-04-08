@@ -25,14 +25,6 @@ It dynamically analyzes incoming tasks, prioritizes them using a Hybrid Reinforc
 🔥 Built to replicate how modern AI-driven operations systems make intelligent, real-time decisions at scale.
 ---
 
-# 🧠 Core Innovation :
-This system combines:
-- 🤖 Reinforcement Learning (RL) → Adaptive reward-based optimization
-- 🧩 Large Language Model (LLM) → Context-aware decision reasoning
-- ⚡ Real-time Execution Engine → Live task prioritization
-- 👉 Result: A self-optimizing AI system that improves decisions dynamically.
----
-
 # ⚙️ Key Features :
 
 - ⚡ Real-time task processing & optimization  
@@ -45,9 +37,7 @@ This system combines:
 
 - 🔍 Step-by-step decision tracing (Explainable AI)  
 
-- 🔗 REST API endpoints for integration  
-
-- 🖥️ Terminal-style interactive UI  
+- 🔗 REST API endpoints for integration   
 ---
 
 # 🧪 System Workflow :
@@ -69,7 +59,7 @@ The system evaluates each decision using a weighted scoring model:
 ---
 | Endpoint | Description                |
 |----------|----------------------------|
-| `/`      | System status              |
+| `/run`      | AI pipeline               |
 | `/step`  | Execute optimization step  |
 | `/state` | View current tasks         |
 | `/reset` | Reset environment          |
@@ -139,6 +129,27 @@ ai-ops-system/
 - configs/ → Environment and runtime configurations
 - Dockerfile → Enables containerized deployment on Hugging Face
 ---
+# Output format :
+```
+[START] task=<task_name> env=<environment> model=<model>
+[STEP] step=<n> action=<action> reward=<value> done=<true|false> error=<msg|null>
+[END] success=<true|false> steps=<n> score=<value> rewards=<r1,r2,...>
+```
+# 🤖 LLM Integration :
+The system uses the OpenAI-compatible client:
+```
+Python
+client = OpenAI(
+    base_url=os.getenv("API_BASE_URL"),
+    api_key=os.getenv("API_KEY")
+)
+```
+Supports proxy-based evaluation (LiteLLM)
+No hardcoded credentials
+Fully environment-driven
+
+---
+
 # 🔮 Future Enhancements for this system :
 
 | Enhancements |
@@ -150,17 +161,25 @@ ai-ops-system/
 | 🔄 Continuous learning from live data |
 ---
 # 🧩 System Architecture :
-
-![WhatsApp Image 2026-04-05 at 10 22 24 PM](https://github.com/user-attachments/assets/6b620c0c-915a-4207-aaea-d4bff2c4be65)
-
+```
+User Request / Validator
+        ↓
+     FastAPI Server (main.py)
+        ↓
+     AI Engine (inference.py)
+        ↓
+ RL Decision + LLM Reasoning
+        ↓
+ Task Execution (ai_ops_env)
+        ↓
+ Structured Output ([START][STEP][END])
+```
 ---
 # 🧠 AI Intelligence Architecture (RL + LLM Hybrid System) :
 
 “Hybrid AI intelligence combining reinforcement learning and LLM reasoning to enable autonomous, adaptive, and explainable decision-making in real-time.”
 
 ![WhatsApp Image 2026-04-05 at 10 37 28 PM](https://github.com/user-attachments/assets/c9ff634a-874a-4bc8-9bb3-97a76a233ef1)
-
-![WhatsApp Image 2026-04-05 at 11 43 09 PM](https://github.com/user-attachments/assets/e48587f8-e8a8-4ece-a519-3af0c8f7d32f)
 
 
 ---
@@ -185,11 +204,6 @@ Open in browser:
 
 http://127.0.0.1:8000 (for local only)
 
-# 🌐 API Endpoints :
-/ → UI / System
-/step → Run decision step
-/state → View tasks
-/reset → Reset system
 
 # ⚙️ Setup Instructions :
 
@@ -267,34 +281,13 @@ The reward is calculated based on:
 ---
 # 📸 Screenshots :
 
-### ⚙️ API Endpoints
-<img width="1838" height="867" alt="image" src="https://github.com/user-attachments/assets/b6b3979f-b1e0-4ad7-823f-9ccee6effc4c" />
+<img width="1918" height="766" alt="image" src="https://github.com/user-attachments/assets/6c9464e9-07f1-4ba0-854e-4bfaccdaed7e" />
+
 ---
-
-# 🎯 Why This Project makes strong imapact :
-
-- Combines Reinforcement Learning + LLM (rare approach)
-- Fully autonomous decision-making system
-- Real-time execution with explainable logs
-- Deployed and accessible live (Hugging Face)
-- Designed like a real AI Ops production system
-
-# 📋 Task Definitions :
-
-| Task | Difficulty | Description |
-|------|----------|------------|
-| Email Triage | Easy | Prioritize incoming emails |
-| Support Routing | Medium | Assign tickets efficiently |
-| Incident Optimization | Hard | Multi-step decision optimization |
----
-## 🔁 Learning Feedback Loop :
-
-![WhatsApp Image 2026-04-05 at 11 38 17 PM](https://github.com/user-attachments/assets/4ee3239d-8ae7-49f5-a237-26f58b6bfc06)
 
 ## 🧠 Decision Intelligence Breakdown
 
 The AI Ops system evaluates each decision using a hybrid scoring mechanism combining priority, action effectiveness, and system efficiency.
-
 
 ---
 # 👨‍💻 Author :
