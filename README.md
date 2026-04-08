@@ -121,7 +121,7 @@ ai-ops-system/
 - Dockerfile → Enables containerized deployment on Hugging Face
 
 ---
-
+## 🔗 Tasks :
 | Task Name                        | Description                                                                          
 |----------------------------------|-------------------------------------------------------------------------------------|
 | Load Balancing Optimization      | Distributes workloads across systems to avoid overload and ensure smooth performance
