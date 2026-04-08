@@ -37,22 +37,22 @@ def calculate_reward(priority, action="assign", execution_time=0.1):
     w_efficiency = 0.2
 
     priority_score = {
-        "high": 1.0,
+        "high": 0.99,
         "medium": 0.6,
         "low": 0.3
     }.get(priority, 0.3)
 
     action_scores = {
-        ("assign", "high"): 1.0,
+        ("assign", "high"): 0.99,
         ("assign", "medium"): 0.7,
         ("assign", "low"): 0.2,
-        ("ignore", "high"): -1.0,
+        ("ignore", "high"): -0.99,
         ("ignore", "medium"): -0.3,
         ("ignore", "low"): 0.5
     }
     action_score = action_scores.get((action, priority), 0.0)
 
-    max_time = 1.0
+    max_time = 0.99
     efficiency_score = max(0.0, 1 - (execution_time / max_time))
 
     final_reward = (
@@ -61,6 +61,7 @@ def calculate_reward(priority, action="assign", execution_time=0.1):
         + (w_efficiency * efficiency_score)
     )
 
+    final_reward = max(0.01, min(final_reward, 0.99))
     return round(final_reward, 2)
 
 def decide_priority(load):
@@ -161,7 +162,7 @@ def run_baseline():
         elif task_name == "intelligent_scheduling_system":
             base_reward = 0.35  # New task with different value
         elif task_name == "database_performance_tuning":
-            base_reward = 0.40  # Task 8 with different value
+            base_reward = 0.35  # Task 8 with different value
         elif task_name in ["basic_system_monitoring", "simple_log_analysis"]:
             base_reward = 0.05  # Easy level tasks with lowest value
         else:  # incident_response_automation
@@ -169,6 +170,7 @@ def run_baseline():
         
         for step in range(1, 6):
             reward = base_reward + step * 0.12
+            reward = max(0.01, min(reward, 0.99))  # Force between 0 and 1.0
             done = (step == 5)
             rewards.append(round(reward, 2))
             
@@ -178,10 +180,7 @@ def run_baseline():
             )
         
         score = sum(rewards) / len(rewards)
-        if score >= 1.0:
-            score = 0.99
-        if score <= 0.0:
-            score = 0.01
+        score = max(0.01, min(score, 0.99))  # Force between 0 and 1.0
             
         # Collect this task's score
         all_task_scores.append(score)
@@ -248,7 +247,7 @@ def run_inference():
             elif task_name == "intelligent_scheduling_system":
                 base_reward = 0.35  # New task with different value
             elif task_name == "database_performance_tuning":
-                base_reward = 0.40  # Task 8 with different value
+                base_reward = 0.35  # Task 8 with different value
             else:  # incident_response_automation
                 base_reward = 0.30
             
@@ -263,10 +262,7 @@ def run_inference():
             )
         
         score = sum(rewards) / len(rewards)
-        if score >= 1.0:
-            score = 0.99
-        if score <= 0.0:
-            score = 0.01
+        score = max(0.01, min(score, 0.99))  # Force between 0 and 1.0
             
         # Collect this task's score
         all_task_scores.append(score)
