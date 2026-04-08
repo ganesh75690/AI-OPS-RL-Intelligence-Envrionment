@@ -220,13 +220,17 @@ def run_inference():
             health_score = 0.5 + (step * 0.1)  # Simulate improving health
             action, confidence = llm_decision(mock_task, health_score)
             
-            # Calculate reward based on LLM decision
-            if confidence >= 0.9:
-                reward = 0.30 + (step * 0.12)
-            elif confidence >= 0.7:
-                reward = 0.20 + (step * 0.12)
-            else:
-                reward = 0.10 + (step * 0.12)
+            # Use the SAME base reward logic as run_baseline
+            if task_name in ["performance_tuning_engine", "cost_efficiency_optimization"]:
+                base_reward = 0.10
+            elif task_name in ["anomaly_detection_monitoring", "resource_allocation_planning"]:
+                base_reward = 0.20
+            elif task_name == "load_balancing_optimization":
+                base_reward = 0.25
+            else:  # incident_response_automation
+                base_reward = 0.30
+            
+            reward = base_reward + step * 0.12
             
             done = (step == 5)
             rewards.append(round(reward, 2))
@@ -268,4 +272,4 @@ def run_inference():
     }
 
 if __name__ == "__main__":
-    run_baseline()
+    run_inference()
