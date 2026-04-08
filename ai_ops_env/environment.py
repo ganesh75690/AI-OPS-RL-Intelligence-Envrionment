@@ -38,7 +38,7 @@ class OpsEnv:
         if action.action_type == "ignore" and task.priority == "high":
             reward -= 0.5
 
-        reward = max(0.0, min(reward, 1.0))
+        reward = max(0.01, min(reward, 0.99))
 
         done = self.state.step_count >= 5
 
