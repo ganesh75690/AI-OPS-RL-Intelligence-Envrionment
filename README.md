@@ -37,7 +37,22 @@ Autonomous Decision-Making Environment for Task Prioritization.
  This project introduces a Hybrid AI Ops Autonomous Decision Engine that leverages both Reinforcement Learning (RL) and Large Language Model (LLM) reasoning to optimize task execution in dynamic environments. The system is designed to intelligently manage and prioritize tasks under varying system conditions such as load, resource availability, and operational constraints.
 At its core, the solution functions as an adaptive decision-making agent that continuously observes the system state, evaluates task priorities, and selects optimal actions to maximize efficiency. By incorporating a reward-driven learning mechanism, the system improves its performance step-by-step, demonstrating progressive optimization across execution cycles.
 
----  
+---
+## 🔗 Why This Matters :
+
+• Modern systems like **cloud platforms, enterprise workflows, and large-scale IT infrastructures** are becoming highly complex  
+• **Manual decision-making** is inefficient, error-prone, and not scalable  
+• Traditional **rule-based systems** fail to adapt to dynamic and changing conditions  
+• This leads to **poor resource utilization** and delayed system responses  
+
+• This project introduces an **autonomous AI-driven decision engine**  
+• It can **analyze system conditions in real time** and prioritize tasks intelligently  
+• Continuously improves performance through **feedback and learning**  
+• Combines **Reinforcement Learning (RL)** with **LLM-based reasoning**  
+• Enables **adaptive, context-aware, and efficient decision-making**  
+• Reduces the need for **constant human intervention**  
+
+---
 ## 🔗 Environment at glance :
 
 
@@ -83,6 +98,25 @@ User Request / Validator
         ↓
  Structured Output ([START][STEP][END])
 ```
+</div>
+---
+
+## 🔗 Workflow :
+
+<div align="center">
+
+Receive tasks with priorities  
+↓  
+Analyze system state  
+↓  
+Select optimal action  
+↓  
+Execute step-wise decisions  
+↓  
+Compute reward  
+↓  
+Improve next step  
+
 </div>
 
 ---
