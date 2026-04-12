@@ -18,7 +18,9 @@
 Autonomous Incident Detection & Recovery using Reinforcement learning environment for Task Prioritization. 
 - “From tasks to intelligence — building systems that learn to decide.”
 
-- Category: AI Systems • Reinforcement Learning • DevOps Automation • OpenEnv Environment • Autonomous System 
+- Category: AI Systems • Reinforcement Learning • DevOps Automation • OpenEnv Environment • Autonomous System
+- This project implements an intelligent AI Ops environment where a reinforcement learning agent autonomously detects, analyzes, and resolves system incidents through a structured decision pipeline.
+It simulates real-world infrastructure behavior under dynamic conditions and demonstrates adaptive, explainable, and reproducible decision-making for system recovery.
 
 ---
 ## 🔗 Overview :
@@ -288,6 +290,33 @@ The system includes two easy-level tasks focused on fundamental operations like 
 
 
 ---
+## 🔗 Output determines the system :
+
+The system generates structured output following the OpenEnv-compatible format, representing a complete reinforcement learning episode.
+Each execution produces:
+- [START] → Initializes the task and environment
+- [STEP] → Represents each action taken by the agent along with reward and state progression
+- [END] → Indicates completion of the episode with success status and total steps
+```
+ - Output Structure
+[START] task=<task_name> env=<environment> model name:......
+[STEP] step=1 action=<action> reward=<0.00> done=false
+[STEP] step=2 action=<action> reward=<0.00> done=false
+...
+[STEP] step=n action=<action> reward=<1.00> done=true
+
+[END] success=<true|false> steps=<n>
+```
+- Characteristics
+
+- Single episode execution per run
+- Rewards normalized and formatted to two decimal places
+- Sequential step-by-step action tracing
+- Clear termination with success or failure
+- Fully compliant with evaluation and validation requirements
+  
+---
+
 ## 🔗 How to Run
 
 The AI Ops Environment runs as a web dashboard where five intelligent agents collaborate to solve IT incidents through a five-phase pipeline. Users watch in real-time as the system detects problems, makes decisions, executes solutions, and learns from each experience to improve future performance.
