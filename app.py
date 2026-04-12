@@ -8,7 +8,15 @@ import sys
 import os
 from ai_ops_env.environment import AIOpsEnv
 from ai_ops_env.models import Action
+# Import grader functions from ai_ops_env for validation system
 from ai_ops_env.grader import grade_easy, grade_medium, grade_hard
+
+# Map grader names to functions for validation
+GRADER_FUNCTIONS = {
+    "grade_easy": grade_easy,
+    "grade_medium": grade_medium,
+    "grade_hard": grade_hard
+}
 from ai_ops_env.tasks import get_tasks
 from ai_ops_env.incident_system import IncidentManager
 from inference import run_inference
@@ -300,6 +308,34 @@ def task_grader_mapping():
         "grader_functions": ["grade_easy", "grade_medium", "grade_hard"],
         "validation_status": "PASS - More than 3 tasks with graders"
     }
+
+@app.get("/validate-graders")
+def validate_graders():
+    """Validate that grader functions exist and are callable"""
+    try:
+        # Test each grader function
+        test_action = Action(task_id="load_balancing_optimization", action_type="assign")
+        test_task = {"id": "load_balancing_optimization", "priority": "high", "difficulty": "medium"}
+        
+        grade_easy_result = grade_easy(test_action, test_task)
+        grade_medium_result = grade_medium(test_action, test_task)
+        grade_hard_result = grade_hard([test_action], [test_task])
+        
+        return {
+            "grade_easy_works": True,
+            "grade_medium_works": True,
+            "grade_hard_works": True,
+            "grade_easy_result": grade_easy_result,
+            "grade_medium_result": grade_medium_result,
+            "grade_hard_result": grade_hard_result,
+            "total_gradable_tasks": len([t for t in get_tasks() if t.get("difficulty") in ["easy", "medium", "hard"]]),
+            "validation_pass": True
+        }
+    except Exception as e:
+        return {
+            "error": str(e),
+            "validation_pass": False
+        }
 
 @app.post("/reward")
 def reward_endpoint(action: Action):
