@@ -5,3 +5,4 @@ openenv-core
 python-multipart
 openai>=1.0.0
 httpx<0.28
+jinja2
