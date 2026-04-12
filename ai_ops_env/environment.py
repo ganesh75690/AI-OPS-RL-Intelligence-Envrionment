@@ -1,5 +1,6 @@
 from ai_ops_env.models import Action, Observation
 from ai_ops_env.reward_learning import reward_learner
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from grader.grader import grade_easy, grade_medium, grade_hard
 from ai_ops_env.state import EnvState
 import random
